@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+import re
+import subprocess
+
+device_ids = (
+    # Vendor    Product
+    ('0x10c4', '0xea60'),  # CP210x UART Bridge
+    ('0x1a86', '0x7523'),  # HL-340 USB-Serial adapter
+)
+
+found = False
+usb_devices = (subprocess
+               .check_output(['VBoxManage', 'list', 'usbhost'])
+               .decode('utf8'))
+usb_devices = usb_devices.split('\n\n')
+for device in usb_devices:
+    uuid = re.search(r'^UUID:\s*(.*)$', device, re.M)
+    for vendor_id, product_id in device_ids:
+        if (uuid and re.search(r'^VendorId:\s*' + vendor_id, device, re.M)
+                and re.search(r'^ProductId:\s*' + product_id, device, re.M)):
+            found = True
+            product = re.search(r'^Product:\s*(.*)$', device, re.M).group(1)
+            if re.search(r'^Current State:\s*Captured$', device, re.M):
+                print('Already attached: {} ({})'.format(product,
+                                                         uuid.group(1)))
+                continue
+            busy = ''
+            if re.search(r'^Current State:\s*Busy$', device, re.M):
+                busy = 'busy '
+            machine_id = open('.vagrant/machines/default/virtualbox/id',
+                              'rb').read()
+            print('Attached {}device: {} ({})'.format(busy, product,
+                                                      uuid.group(1)))
+            subprocess.call(['VBoxManage', 'controlvm', str(machine_id),
+                             'usbattach', uuid.group(1)])
+
+if not found:
+    print('No devices found')
