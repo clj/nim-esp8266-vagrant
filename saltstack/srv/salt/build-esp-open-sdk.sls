@@ -93,6 +93,6 @@ download nim esp8266 examples:
     - text:
       - export PATH="$HOME/src/esp-open-sdk/xtensa-lx106-elf/bin/:$PATH"
       - export PATH="$HOME/.local/bin/:$PATH"  # prefer pip installed esptool
-      - export XTENSA_TOOLS_ROOT="$HOME/src/esp-open-sdk/xtensa-lx106-elf/bin"
+      - export XTENSA_TOOLS_ROOT="$HOME/src/esp-open-sdk/xtensa-lx106-elf/bin/"
       - export SDK_BASE="$HOME/src/ESP8266_NONOS_SDK-{{ sdk_version }}/"
       - export NIM_SDK_BASE="$HOME/src/nim-esp8266-sdk/{{ sdk_version }}/"
