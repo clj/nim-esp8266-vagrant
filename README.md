@@ -18,6 +18,8 @@ Make sure the required dependencies are installed, [see below](#depencencies):
 
 ## Compiling the Bundled Examples
 
+Examples from the https://github.com/clj/nim-esp8266-examples are available in the Vagrant box. These examples can be compiled and uploaded to an ESP8266 board:
+
 * Plug your ESP8266 board or programmer into a USB port
 * Run `./attach-esp` to attach the board or programmer to the Vagrant Box
 
