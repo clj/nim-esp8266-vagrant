@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+import os
 import re
 import subprocess
+import sys
 
 device_ids = (
     # Vendor    Product
@@ -27,12 +29,13 @@ for device in usb_devices:
             busy = ''
             if re.search(r'^Current State:\s*Busy$', device, re.M):
                 busy = 'busy '
-            machine_id = open('.vagrant/machines/default/virtualbox/id',
-                              'rb').read()
-            print('Attached {}device: {} ({})'.format(busy, product,
-                                                      uuid.group(1)))
+            machine_id = open(
+                os.path.join(sys.path[0],
+                             '.vagrant/machines/default/virtualbox/id'),
+                'rb').read()
             subprocess.call(['VBoxManage', 'controlvm', str(machine_id),
                              'usbattach', uuid.group(1)])
-
+            print('Attached {}device: {} ({})'.format(busy, product,
+                                                      uuid.group(1)))
 if not found:
     print('No devices found')
