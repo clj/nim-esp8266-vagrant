@@ -68,8 +68,8 @@ esptool:
 download nim esp8266 sdk:
   archive.extracted:
     - name: {{ pillar['home'] }}/src
-    - source: https://github.com/clj/nim-esp8266-sdk/releases/download/release-20191030/nim_esp8266_nonos_sdk-20191030.tar.gz
-    - source_hash: ac9106ae6af713ad2e04174459161628fd628db18dee10bc93b05a746ef1fabdad773d10e4e5108f16cf27c2e91a39d9385534ebd57fd6af2d6bbcef659b47c9
+    - source: https://github.com/clj/nim-esp8266-sdk/releases/download/release-20191110/nim_esp8266_nonos_sdk-20191110.tar.gz
+    - source_hash: 5b486084475b2087f8666e7e6685b801fb0435b006ca4c71c5cd510ab06fb7654a66ad7fb12faadb48f578e5ccea79adc7f7f27e9bb31fd2e01486fa555cc53a
     - user: vagrant
 
 {{ pillar['home'] }}/src/nim-esp8266-examples:
@@ -82,10 +82,10 @@ download nim esp8266 sdk:
 download nim esp8266 examples:
   archive.extracted:
     - name: {{ pillar['home'] }}/src/nim-esp8266-examples
-    - source: https://github.com/clj/nim-esp8266-examples/archive/release-20191031.tar.gz
+    - source: https://github.com/clj/nim-esp8266-examples/archive/release-20191110.tar.gz
     - options: --strip-components=1
     - enforce_toplevel: false
-    - source_hash: 1899617f48e67fefcb97a4b752ba2c9ffa9258b62046e231fdc35c3a68c9c1fdaf2424b2178fba92562f4a8d6ecb971caeab13d78193ed3ddc76ddab4c71be24
+    - source_hash: 6e66160f1a862998ce237e57b04e687edf0f4be64460377e54e4db9e425151b63ccf3183cb653c5601639cbfbd52b8d50705c40fab736d1b729201b2c222b94e
     - user: vagrant
 
 {{ pillar['home'] }}/.bashrc:
