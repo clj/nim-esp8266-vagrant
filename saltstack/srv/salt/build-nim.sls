@@ -4,7 +4,7 @@ download choosenim init:
   file.managed:
     - name: /tmp/choosenim-init.sh
     - source: https://nim-lang.org/choosenim/init.sh
-    - source_hash: sha512=3e953275a719355ecdee948bfcfed4116510d084c9bb5937610e201d8b307757d0e5bafe620d840399146b0ea369cb88faa2e40bf0b50ff324e7056f68df0afe
+    - source_hash: sha512=44aec0df4bc7c601b779e9701417f19b54af0f0bc53c9b9b0bad8d88f9ae9d46c2a219bbdf3d5daee8969ce6e3e404b38889386a12d628bfe7e0ab190d482416
     - user: vagrant
     - group: vagrant
 
